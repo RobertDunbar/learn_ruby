@@ -18,8 +18,8 @@ def repeat phrase, num = 2
     output
 end
 
-def start_of_word phrase, numLetters
-    phrase[0, numLetters]
+def start_of_word phrase, num_letters
+    phrase[0, num_letters]
 end
 
 def first_word phrase
@@ -28,10 +28,10 @@ def first_word phrase
 end
 
 def titleize phrase
-    splitStr = phrase.split(" ")
+    split_str = phrase.split(" ")
     output = ""
     counter = 0
-    splitStr.each do |word|
+    split_str.each do |word|
         if (word == "the" || word == "and" || word == "over") && counter == 0
             output += word.capitalize
         elsif (word != "the" && word != "and" && word != "over")
@@ -40,7 +40,7 @@ def titleize phrase
             output += word
         end
         counter += 1
-        if counter < splitStr.length
+        if counter < split_str.length
             output += " "
         end
     end

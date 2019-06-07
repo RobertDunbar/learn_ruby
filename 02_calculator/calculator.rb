@@ -15,9 +15,9 @@ def sum array
     result
 end
 
-def multiply arrayNum
+def multiply array_num
     result = 1
-    arrayNum.each do |num|
+    array_num.each do |num|
         result *= num
     end
 
