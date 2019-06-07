@@ -3,70 +3,70 @@ def translate phrase
     consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z"]
     vowels = ["a", "e", "i", "o", "u"]
     punctuation = [",", ".", "!"]
-    splitStr = phrase.split(" ")
-    startVowel = false
-    oneConsonant = false
-    twoConsonant = false
-    threeConsonant = false
-    upperCase = false
-    hasPunctuation = false
+    split_str = phrase.split(" ")
+    start_vowel = false
+    one_consonant = false
+    two_consonant = false
+    three_consonant = false
+    upper_case = false
+    has_punctuation = false
     counter = 0
     output = ""
-    newWord = ""
-    punctuationChar = ""
-    splitStr.each do |word|
+    new_word = ""
+    punctuation_char = ""
+    split_str.each do |word|
         letterOne = word[0,1]
         if letterOne == letterOne.upcase
-            upperCase = true
+            upper_case = true
         end
         letterTwo = word[1,1]
         letterThree = word[2,1]
         lastChar = word[word.length - 1, 1]
         if punctuation.index(lastChar) != nil
-            punctuationChar = lastChar
+            punctuation_char = lastChar
             word = word[0, word.length - 1]
         end
         if vowels.index(letterOne) != nil
-            startVowel = true
+            start_vowel = true
         elsif consonants.index(letterOne) != nil && vowels.index(letterTwo) != nil
             if letterOne == "q" && letterTwo == "u"
-                twoConsonant = true
+                two_consonant = true
             else
-                oneConsonant = true
+                one_consonant = true
             end
         elsif (consonants.index(letterTwo) != nil && consonants.index(letterThree) == nil)
             if letterTwo == "q" && letterThree = "u"
-                threeConsonant = true
+                three_consonant = true
             else
-                twoConsonant = true
+                two_consonant = true
             end
         elsif consonants.index(letterThree) != nil
-            threeConsonant = true
+            three_consonant = true
         end
-        if startVowel
+        if start_vowel
             output += word + "ay"
-        elsif oneConsonant && !(twoConsonant && threeConsonant)
-            newWord = word[1, word.length] + letterOne + "ay" + punctuationChar
-        elsif twoConsonant && !threeConsonant
-            newWord = word[2, word.length] + letterOne + letterTwo + "ay" + punctuationChar
-        elsif threeConsonant
-            newWord = word[3, word.length] + letterOne + letterTwo + letterThree + "ay" + punctuationChar
+        elsif one_consonant && !(two_consonant && three_consonant)
+            new_word = word[1, word.length] + letterOne + "ay" + punctuation_char
+        elsif two_consonant && !three_consonant
+            new_word = word[2, word.length] + letterOne + letterTwo + "ay" + punctuation_char
+        elsif three_consonant
+            new_word = word[3, word.length] + letterOne + letterTwo + letterThree + "ay" + punctuation_char
         end
-        if upperCase
-            newWord = newWord.capitalize
+        if upper_case
+            new_word = new_word.capitalize
         end
-        output += newWord
-        if counter < splitStr.length - 1
+        output += new_word
+        if counter < split_str.length - 1
             output += " "
         end
         counter += 1
-        startVowel = false
-        oneConsonant = false
-        twoConsonant = false
-        threeConsonant = false
-        upperCase = false
-        hasPunctuation = false
-        punctuationChar = ""
+        start_vowel = false
+        one_consonant = false
+        two_consonant = false
+        three_consonant = false
+        upper_case = false
+        has_punctuation = false
+        punctuation_char = ""
     end
     output
 end
