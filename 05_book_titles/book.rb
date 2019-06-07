@@ -19,6 +19,4 @@ class Book
         end
         words.join(" ")
     end
-
-
 end
