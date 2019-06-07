@@ -8,14 +8,11 @@ def shout phrase
 end
 
 def repeat phrase, num = 2
-    output = ""
+    output = []
     num.times do |count|
-        output += phrase
-        if count < num -1
-            output += " "
-        end
+        output << phrase
     end
-    output
+    output.join(" ")
 end
 
 def start_of_word phrase, num_letters
@@ -23,26 +20,20 @@ def start_of_word phrase, num_letters
 end
 
 def first_word phrase
-    output = phrase.split(" ")
+    output = phrase.split
     output[0]
 end
 
 def titleize phrase
-    split_str = phrase.split(" ")
-    output = ""
+    split_str = phrase.split
+    exceptions = ["the", "and", "over"]
+    output = []
     counter = 0
     split_str.each do |word|
-        if (word == "the" || word == "and" || word == "over") && counter == 0
-            output += word.capitalize
-        elsif (word != "the" && word != "and" && word != "over")
-            output += word.capitalize
-        else
-            output += word
+        if exceptions.index(word) == nil
+            word.capitalize!
         end
-        counter += 1
-        if counter < split_str.length
-            output += " "
-        end
+        split_str[0].capitalize!
     end
-    output
+    split_str.join(" ")
 end
