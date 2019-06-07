@@ -27,8 +27,6 @@ end
 def titleize phrase
     split_str = phrase.split
     exceptions = ["the", "and", "over"]
-    output = []
-    counter = 0
     split_str.each do |word|
         if exceptions.index(word) == nil
             word.capitalize!
