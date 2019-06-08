@@ -6,9 +6,7 @@ def translate phrase
     split_str.each do |word|
         chars = word.split("")
         index = split_str.index(word)
-        if chars[0] == chars[0].upcase
-            capitalise = true
-        end
+        capitalise = true if chars[0] == chars[0].upcase
         punct_char = word[word.length - 1]
         if punct.include?(punct_char)
             chars.pop
